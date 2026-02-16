@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Play } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
@@ -31,18 +31,18 @@ export default function HeroSection() {
 
   const trustIndicators = [
     { label: '20+', subtext: 'Industries Served' },
-    { label: '2K+', subtext: 'Inspections Completed' },
+    { label: '10K+', subtext: 'Inspections Completed' },
     { label: '98%', subtext: 'Client Satisfaction' },
   ]
 
   return (
     <section
       id="hero-section"
-      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-vericheck-navy pt-20"
+      /* Increased pt-32 to provide breathing room under the fixed Header */
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-vericheck-navy pt-32"
     >
       {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
-        {/* Video Element */}
         <video
           autoPlay
           muted
@@ -55,15 +55,8 @@ export default function HeroSection() {
           Your browser does not support the video tag.
         </video>
 
-        {/* Dark Semi-Transparent Overlay (Scrim) */}
         <div
           className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
-          aria-hidden="true"
-        />
-
-        {/* Additional subtle gradient for visual depth */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-vericheck-navy/40 to-transparent"
           aria-hidden="true"
         />
       </div>
@@ -79,19 +72,19 @@ export default function HeroSection() {
           {/* Main Headline */}
           <motion.div variants={itemVariants} className="space-y-4">
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight text-balance"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight"
               variants={itemVariants}
             >
               VeriCheck
             </motion.h1>
             <motion.div
-              className="h-1 w-20 bg-gradient-to-r from-vericheck-blue to-vericheck-lime mx-auto"
+              className="h-1.5 w-20 bg-gradient-to-r from-vericheck-blue to-vericheck-lime mx-auto rounded-full"
               initial={{ width: 0 }}
               animate={{ width: 80 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             />
             <motion.p
-              className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto text-balance leading-relaxed"
+              className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto font-medium"
               variants={itemVariants}
             >
               Precision in Every Detail, Trust in Every Check
@@ -103,12 +96,12 @@ export default function HeroSection() {
             className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            VeriCheck is a leading Third Party Inspection Company in Egypt providing professional Pre Shipment Inspection, AQL Inspection (ISO 2859-1), and Quality Control Services to reduce shipment risks and ensure product compliance before export.
+            VeriCheck is a leading Third Party Inspection Company in Egypt providing professional Pre Shipment Inspection, AQL Inspection (ISO 2859-1), and Quality Control Services.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
+            className="flex justify-center items-center pt-4"
             variants={itemVariants}
           >
             <Link href="#contact">
@@ -117,70 +110,40 @@ export default function HeroSection() {
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
-            {/* <Button
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 font-bold text-lg px-8 py-6 rounded-lg backdrop-blur-sm"
-            >
-              <Play size={20} className="mr-2" />
-              Watch Demo
-            </Button> */}
           </motion.div>
         </motion.div>
 
-        {/* Trust Indicators */}
-        {/* <motion.div
-          className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
+        {/* Trust Indicators - Positioned to avoid clash with Scroll Indicator */}
+        <motion.div
+          className="mt-12 md:mt-16 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto relative z-20 pb-20"
           variants={containerVariants}
         >
           {trustIndicators.map((indicator, index) => (
             <motion.div
               key={index}
-              className="text-center space-y-2 backdrop-blur-sm bg-white/5 p-4 rounded-lg border border-white/10 hover:border-white/20 transition-colors"
+              className="text-center space-y-1 backdrop-blur-md bg-white/10 p-4 rounded-xl border border-white/20 hover:border-vericheck-lime/50 transition-all shadow-2xl"
               variants={itemVariants}
-              whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.15)' }}
             >
-              <div className="text-2xl sm:text-3xl font-bold text-vericheck-lime">
+              <div className="text-xl sm:text-3xl font-extrabold text-vericheck-lime">
                 {indicator.label}
               </div>
-              <div className="text-xs sm:text-sm text-white/70">
+              <div className="text-[10px] sm:text-sm font-medium uppercase tracking-wider text-white/80">
                 {indicator.subtext}
               </div>
             </motion.div>
           ))}
-        </motion.div> */}
-
-
-{/* Trust Indicators - Adjusted positioning to avoid clash */}
-<motion.div
-  className="mt-8 md:mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto relative z-20 pb-16" // Added pb-16 to push cards up from the bottom
-  variants={containerVariants}
->
-  {trustIndicators.map((indicator, index) => (
-    <motion.div
-      key={index}
-      className="text-center space-y-1 backdrop-blur-md bg-white/10 p-3 sm:p-5 rounded-xl border border-white/20 hover:border-vericheck-lime/50 transition-all shadow-2xl"
-      variants={itemVariants}
-      whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.15)' }}
-    >
-      <div className="text-xl sm:text-3xl font-extrabold text-vericheck-lime">
-        {indicator.label}
-      </div>
-      <div className="text-[10px] sm:text-sm font-medium uppercase tracking-wider text-white/80">
-        {indicator.subtext}
-      </div>
-    </motion.div>
-  ))}
-</motion.div>
+        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Positioned lower to avoid the statistics cards */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-        animate={{ y: [0, 12, 0] }}
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10"
+        animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white/60 rounded-full mt-2" />
+        <div className="w-5 h-9 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-vericheck-lime rounded-full mt-2" />
         </div>
       </motion.div>
     </section>

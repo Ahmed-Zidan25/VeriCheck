@@ -18,6 +18,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 100)
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0
       setScrollProgress(scrollPercent)

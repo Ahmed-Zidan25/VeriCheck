@@ -8,7 +8,14 @@ const content = {
   vision: {
     icon: Target,
     title: 'Our Vision',
-    description: 'To build a trusted and reliable third-party inspection company based in Egypt, serving clients across Africa, Asia, and Europe with transparent, accurate, and professional quality control services. We aim to grow step by step, expanding our presence regionally and internationally while earning our clients’ trust through consistency, integrity, and measurable results.',
+    points: [
+      'Establish a trusted third-party inspection hub in Egypt',
+      'Serve international markets across Africa, Asia, and Europe',
+      'Deliver transparent and professional quality control',
+      'Expand regional and international presence step-by-step',
+      'Build trust through consistency and integrity',
+      'Focus on delivering measurable results for every client'
+    ],
   },
   mission: {
     icon: Clipboard,
