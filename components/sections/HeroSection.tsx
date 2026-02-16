@@ -1,11 +1,15 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function HeroSection() {
+  // State to track if the video fails to load
+  const [videoError, setVideoError] = useState(false)
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,22 +46,27 @@ export default function HeroSection() {
     >
       {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          /* You can keep or change the poster image as a fallback while the video loads */
-          poster="/images/textiles.jpg"
-        >
-          {/* UPDATED: Your Vercel Public Blob URL */}
-          <source 
-            src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/1164918_Man_Business_3840x2160.mp4" 
-            type="video/mp4" 
+        {!videoError ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            onError={() => setVideoError(true)} // Switches to image if URL breaks
+            className="w-full h-full object-cover"
+          >
+            <source 
+              src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/1164918_Man_Business_3840x2160.mp4" 
+              type="video/mp4" 
+            />
+          </video>
+        ) : (
+          /* Fallback Placeholder Image - Only shows if video fails */
+          <div 
+            className="w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/textiles.jpg')" }}
           />
-          Your browser does not support the video tag.
-        </video>
+        )}
 
         <div
           className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
@@ -77,7 +86,6 @@ export default function HeroSection() {
           <motion.div variants={itemVariants} className="space-y-4">
             <motion.h1
               className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight"
-              variants={itemVariants}
             >
               VeriCheck
             </motion.h1>
