@@ -85,18 +85,18 @@ export default function Header() {
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-20">
           {/* Logo - Nav Version */}
-         {/*  <div className="flex items-center gap-2" ref={navLogoRef}>
+          <div className="flex items-center gap-2" ref={navLogoRef}>
             <Link href="/" className="flex items-center gap-2">
               <div className="relative w-40 h-12">
                 <Image 
-                  src="/logo.jpeg" 
+                  src="images/logo.png" 
                   alt="VeriCheck Logo" 
                   fill 
                   className="object-contain brightness-0 invert" // This makes the logo white for the dark nav
                 />
               </div>
             </Link>
-          </div> */}
+          </div> 
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -154,15 +154,15 @@ export default function Header() {
           transition: 'all 0.1s ease-out',
         }}
       >
-        <div className="relative w-64 h-32">
+        {/* <div className="relative w-64 h-32">
           <Image 
-            src="images/Copilot_20260216_091251.png" 
+            src="images/logo.png" 
             alt="VeriCheck Hero Logo" 
             fill 
             className="object-contain" 
             priority
           />
-        </div>
+        </div> */}
       </div>
     </>
   )
