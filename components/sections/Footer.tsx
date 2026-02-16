@@ -53,7 +53,10 @@ export default function Footer() {
               <Image 
                 src="images/logo.png" 
                 alt="VeriCheck Logo" 
-              />
+              /*   fill 
+                className="object-contain brightness-0 invert" // Turns logo white to match footer theme
+               */
+               />
             </div>
             
             <p className="text-vericheck-grey text-sm mb-6 leading-relaxed">
