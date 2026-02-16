@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image' // Added Image import
 import { motion } from 'framer-motion'
-import { Facebook, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -30,9 +30,9 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Facebook, href: 'https://www.facebook.com/veri-check/', label: 'Facebook' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/veri-check/', label: 'LinkedIn' },
+    
   ]
 
   return (

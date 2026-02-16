@@ -91,8 +91,8 @@ export default function Header() {
                 <Image 
                   src="images/logo.png" 
                   alt="VeriCheck Logo" 
-                  fill 
-                  className="object-contain brightness-0 invert" // This makes the logo white for the dark nav
+                  /* fill 
+                  className="object-contain brightness-0 invert" // This makes the logo white for the dark nav */
                 />
               </div>
             </Link>
