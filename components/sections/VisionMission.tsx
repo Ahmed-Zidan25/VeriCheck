@@ -64,9 +64,14 @@ export default function VisionMission() {
               <h3 className="text-2xl font-bold text-vericheck-navy mb-4">
                 {content.vision.title}
               </h3>
-              <p className="text-vericheck-navy/70 leading-relaxed text-lg">
-                {content.vision.description}
-              </p>
+              <ul className="space-y-4">
+                {content.vision.points.map((point, i) => (
+                  <li key={i} className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-vericheck-blue shrink-0 mt-1" />
+                    <span className="text-vericheck-navy/80 leading-snug">{point}</span>
+                  </li>
+                ))}
+              </ul>
             </Card>
           </motion.div>
 
