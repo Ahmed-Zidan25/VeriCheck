@@ -1,72 +1,32 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Clipboard,
-  Building2,
-  Microscope,
-  Truck,
-  Users,
-  Briefcase,
-} from 'lucide-react'
+import { Clipboard, Target, CheckCircle2 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 
-const services = [
-  {
-    icon: Clipboard,
+const content = {
+  vision: {
+    icon: Target,
     title: 'Our Vision',
-    description: 'To build a trusted and reliable third-party inspection company based in Egypt, serving clients across Africa, Asia, and Europe with transparent, accurate, and professional quality control services.
-We aim to grow step by step, expanding our presence regionally and internationally while earning our clients’ trust through consistency, integrity, and measurable results..',
+    description: 'To build a trusted and reliable third-party inspection company based in Egypt, serving clients across Africa, Asia, and Europe with transparent, accurate, and professional quality control services. We aim to grow step by step, expanding our presence regionally and internationally while earning our clients’ trust through consistency, integrity, and measurable results.',
   },
-  {
-    icon: Building2,
+  mission: {
+    icon: Clipboard,
     title: 'Our Mission',
-    description: 'At VeriCheck Inspection Services, our mission is to provide reliable and independent third-party inspection services from Egypt to clients across Africa, Asia, and Europe.
-We are committed to:
-Helping importers and exporters reduce shipment risks before goods leave the factory
-Delivering accurate, clear, and professional inspection reports within 24 hours
-Applying international standards such as AQL (ISO 2859-1)
-Building long-term partnerships based on transparency, integrity, and consistent performance
-Expanding our network step by step to better serve regional and international markets.',
+    points: [
+      'Helping importers and exporters reduce shipment risks before goods leave the factory',
+      'Delivering accurate, clear, and professional inspection reports within 24 hours',
+      'Applying international standards such as AQL (ISO 2859-1)',
+      'Building long-term partnerships based on transparency, integrity, and consistent performance',
+      'Expanding our network step by step to better serve regional and international markets.',
+    ],
   },
-  
-]
+}
 
-export default function ServicesGrid() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [visibleCards, setVisibleCards] = useState<boolean[]>(
-    new Array(services.length).fill(false)
-  )
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(
-              entry.target.getAttribute('data-index') || '0'
-            )
-            setVisibleCards((prev) => {
-              const newVisible = [...prev]
-              newVisible[index] = true
-              return newVisible
-            })
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    const cards = containerRef.current?.querySelectorAll('[data-card]')
-    cards?.forEach((card) => observer.observe(card))
-
-    return () => observer.disconnect()
-  }, [])
-
+export default function VisionMission() {
   return (
-    <section id="services" className="py-20 bg-vericheck-grey">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 bg-vericheck-grey/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,57 +35,58 @@ export default function ServicesGrid() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-vericheck-navy mb-4 text-pretty">
+          <h2 className="text-4xl md:text-5xl font-bold text-vericheck-navy mb-4">
             Our Vision & Mission
           </h2>
-          <p className="text-lg text-vericheck-navy/70 max-w-2xl mx-auto leading-relaxed">
-            Comprehensive inspection and quality control solutions tailored to your industry needs
-          </p>
+          <div className="h-1.5 w-20 bg-vericheck-lime mx-auto rounded-full" />
         </motion.div>
 
-        {/* Services Grid */}
-        <div
-          ref={containerRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {services.map((service, index) => {
-            const Icon = service.icon
-            return (
-              <motion.div
-                key={index}
-                data-card
-                data-index={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={visibleCards[index] ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full p-6 border-2 border-vericheck-navy/10 hover:border-vericheck-lime hover:shadow-2xl transition-all duration-300 group cursor-pointer bg-white">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="mb-4 inline-block p-3 bg-gradient-to-br from-vericheck-blue to-vericheck-lime rounded-lg"
-                  >
-                    <Icon className="w-6 h-6 text-vericheck-white" />
-                  </motion.div>
+        {/* Vision & Mission Grid */}
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+          {/* Vision Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Card className="h-full p-8 border-none shadow-xl bg-white hover:shadow-2xl transition-shadow duration-300">
+              <div className="mb-6 inline-flex p-4 bg-vericheck-blue/10 rounded-2xl">
+                <content.vision.icon className="w-8 h-8 text-vericheck-blue" />
+              </div>
+              <h3 className="text-2xl font-bold text-vericheck-navy mb-4">
+                {content.vision.title}
+              </h3>
+              <p className="text-vericheck-navy/70 leading-relaxed text-lg">
+                {content.vision.description}
+              </p>
+            </Card>
+          </motion.div>
 
-                  <h3 className="text-xl font-bold text-vericheck-navy mb-3 group-hover:text-vericheck-blue transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-vericheck-navy/70 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Animated Border Glow on Hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
-                    style={{
-                      boxShadow: `inset 0 0 0 2px rgba(118, 188, 33, 0.5)`,
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </Card>
-              </motion.div>
-            )
-          })}
+          {/* Mission Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Card className="h-full p-8 border-none shadow-xl bg-white hover:shadow-2xl transition-shadow duration-300">
+              <div className="mb-6 inline-flex p-4 bg-vericheck-lime/10 rounded-2xl">
+                <content.mission.icon className="w-8 h-8 text-vericheck-lime" />
+              </div>
+              <h3 className="text-2xl font-bold text-vericheck-navy mb-4">
+                {content.mission.title}
+              </h3>
+              <ul className="space-y-4">
+                {content.mission.points.map((point, i) => (
+                  <li key={i} className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-vericheck-lime shrink-0 mt-1" />
+                    <span className="text-vericheck-navy/80 leading-snug">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </motion.div>
         </div>
       </div>
     </section>
