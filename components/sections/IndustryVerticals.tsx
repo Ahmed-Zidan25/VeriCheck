@@ -198,7 +198,7 @@ export default function IndustryVerticals() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
         >
           <div className="p-6 bg-gradient-to-br from-vericheck-navy/5 to-vericheck-blue/5 rounded-xl border border-vericheck-blue/10">
-            <div className="text-4xl font-bold text-vericheck-blue mb-2">10K+</div>
+            <div className="text-4xl font-bold text-vericheck-blue mb-2">2K+</div>
             <div className="text-vericheck-navy font-semibold">Inspections Completed</div>
             <p className="text-sm text-gray-600 mt-2">Across all industry sectors</p>
           </div>
@@ -208,7 +208,7 @@ export default function IndustryVerticals() {
             <p className="text-sm text-gray-600 mt-2">International standards adherence</p>
           </div>
           <div className="p-6 bg-gradient-to-br from-vericheck-blue/5 to-vericheck-navy/5 rounded-xl border border-vericheck-navy/10">
-            <div className="text-4xl font-bold text-vericheck-navy mb-2">50+</div>
+            <div className="text-4xl font-bold text-vericheck-navy mb-2">10+</div>
             <div className="text-vericheck-navy font-semibold">Industry Sectors</div>
             <p className="text-sm text-gray-600 mt-2">Expert coverage across markets</p>
           </div>

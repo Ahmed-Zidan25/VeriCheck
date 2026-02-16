@@ -38,7 +38,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero-section"
-      /* Increased pt-32 to provide breathing room under the fixed Header */
+      /* Increased padding-top to pt-32 to prevent navigation bar clash */
       className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-vericheck-navy pt-32"
     >
       {/* Video Background with Overlay */}
@@ -113,9 +113,9 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Trust Indicators - Positioned to avoid clash with Scroll Indicator */}
+        {/* Trust Indicators - Raised with pb-24 to avoid clashing with the scroll indicator */}
         <motion.div
-          className="mt-12 md:mt-16 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto relative z-20 pb-20"
+          className="mt-12 md:mt-16 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto relative z-20 pb-24"
           variants={containerVariants}
         >
           {trustIndicators.map((indicator, index) => (
@@ -136,10 +136,10 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator - Positioned lower to avoid the statistics cards */}
+      {/* Scroll Indicator - Lowered to bottom-2 for clear separation */}
       <motion.div
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10"
-        animate={{ y: [0, 10, 0] }}
+        className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-10"
+        animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
         <div className="w-5 h-9 border-2 border-white/30 rounded-full flex justify-center">
