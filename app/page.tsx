@@ -1,5 +1,6 @@
 import Header from '@/components/sections/Header'
 import HeroSection from '@/components/sections/HeroSection'
+import VisionMission from '@/components/sections/VisionMission'
 import ServicesGrid from '@/components/sections/ServicesGrid'
 import IndustryVerticals from '@/components/sections/IndustryVerticals'
 import SuggestedTopics from '@/components/sections/SuggestedTopics'
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-vericheck-white">
       <Header />
       <HeroSection />
+      <VisionMission />
       <ServicesGrid />
       <IndustryVerticals />
       <SuggestedTopics />

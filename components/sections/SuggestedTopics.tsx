@@ -14,47 +14,27 @@ interface Topic {
 
 const topics: Topic[] = [
   {
-    id: 'textiles',
-    title: 'Textiles & Apparel',
-    image: '/images/textiles.jpg',
-    description: 'Quality assurance for fabrics, garments, and textile products',
+    id: 'Import & Export',
+    title: 'Import & Export',
+    image: '/images/import.jpg',
+    description: 'Secure compliance and Total Quality Assurance',
     href: '#textiles'
   },
   {
-    id: 'oil-gas',
-    title: 'Oil & Gas',
-    image: '/images/oil-gas.jpg',
-    description: 'Pipeline and equipment inspection services',
+    id: 'Hospitality Assurance Solutions',
+    title: 'Hospitality Assurance Solutions',
+    image: '/images/hospitality.jpg',
+    description: 'Health, safety and wellbeing',
     href: '#oil-gas'
   },
   {
     id: 'food',
     title: 'Food & Agriculture',
-    image: '/images/food-agriculture.jpg',
-    description: 'Food safety and agricultural product inspection',
+    image: '/images/food-agriculture2.jpg',
+    description: 'Agrochemical and pesticide regulatory testing',
     href: '#food'
   },
-  {
-    id: 'electronics',
-    title: 'Electronics & Manufacturing',
-    image: '/images/electronics.jpg',
-    description: 'Component testing and manufacturing quality control',
-    href: '#electronics'
-  },
-  {
-    id: 'construction',
-    title: 'Construction & Materials',
-    image: '/images/construction.jpg',
-    description: 'Building materials and structural inspection',
-    href: '#construction'
-  },
-  {
-    id: 'pharma',
-    title: 'Pharmaceuticals & Chemicals',
-    image: '/images/pharmaceuticals.jpg',
-    description: 'Pharmaceutical and chemical product certification',
-    href: '#pharma'
-  }
+ 
 ]
 
 const containerVariants = {

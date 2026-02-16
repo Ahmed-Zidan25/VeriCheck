@@ -128,7 +128,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Trust Indicators */}
-         <motion.div
+        {/* <motion.div
           className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
           variants={containerVariants}
         >
@@ -147,7 +147,7 @@ export default function HeroSection() {
               </div>
             </motion.div>
           ))}
-        </motion.div> 
+        </motion.div> */}
 
 
 {/* Trust Indicators - Adjusted positioning to avoid clash */}
