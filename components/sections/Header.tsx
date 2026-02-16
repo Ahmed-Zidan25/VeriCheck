@@ -144,7 +144,7 @@ export default function Header() {
       </header>
 
       {/* Flying Logo in Hero */}
-      <div
+     {/*  <div
         ref={heroLogoRef}
         className="fixed pointer-events-none z-30"
         style={{
@@ -162,7 +162,7 @@ export default function Header() {
             className="object-contain" 
             priority
           />
-        </div> 
+        </div>  */}
       </div>
     </>
   )

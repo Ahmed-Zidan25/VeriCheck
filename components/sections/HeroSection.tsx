@@ -128,7 +128,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Trust Indicators */}
-        <motion.div
+        {/* <motion.div
           className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
           variants={containerVariants}
         >
@@ -147,7 +147,30 @@ export default function HeroSection() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
+
+
+{/* Trust Indicators - Adjusted positioning to avoid clash */}
+<motion.div
+  className="mt-8 md:mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto relative z-20 pb-16" // Added pb-16 to push cards up from the bottom
+  variants={containerVariants}
+>
+  {trustIndicators.map((indicator, index) => (
+    <motion.div
+      key={index}
+      className="text-center space-y-1 backdrop-blur-md bg-white/10 p-3 sm:p-5 rounded-xl border border-white/20 hover:border-vericheck-lime/50 transition-all shadow-2xl"
+      variants={itemVariants}
+      whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.15)' }}
+    >
+      <div className="text-xl sm:text-3xl font-extrabold text-vericheck-lime">
+        {indicator.label}
+      </div>
+      <div className="text-[10px] sm:text-sm font-medium uppercase tracking-wider text-white/80">
+        {indicator.subtext}
+      </div>
+    </motion.div>
+  ))}
+</motion.div>
       </div>
 
       {/* Scroll Indicator */}
