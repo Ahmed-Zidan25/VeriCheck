@@ -78,27 +78,26 @@ export default function ContactForm() {
     setCurrentStep((prev) => Math.max(prev - 1, 1))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setError('');
-
-  try {
-    const response = await fetch('/api/quote', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      setIsSubmitted(true);
-    } else {
-      const data = await response.json();
-      setError(data.error || 'Submission failed. Please try again.');
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (validateStep(currentStep)) {
+      setIsSubmitted(true)
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setCurrentStep(1)
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          industry: '',
+          details: '',
+          timeline: '',
+        })
+      }, 3000)
     }
-  } catch (err) {
-    setError('Network error. Please check your connection.');
   }
-};
 
   return (
     <section id="contact" className="py-20 bg-vericheck-grey">
