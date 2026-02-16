@@ -156,7 +156,7 @@ export default function Header() {
       >
         <div className="relative w-64 h-32">
           <Image 
-            src="/logo.jpeg" 
+            src="images/logo.png" 
             alt="VeriCheck Hero Logo" 
             fill 
             className="object-contain" 

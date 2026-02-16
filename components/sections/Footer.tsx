@@ -51,7 +51,7 @@ export default function Footer() {
             {/* Updated Logo Section */}
             <div className="relative w-48 h-16 mb-4">
               <Image 
-                src="/logo.jpeg" 
+                src="images/logo.png" 
                 alt="VeriCheck Logo" 
                 fill 
                 className="object-contain brightness-0 invert" // Turns logo white to match footer theme
@@ -117,11 +117,11 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
                 <Phone size={18} className="flex-shrink-0 mt-0.5" />
-                <span className="text-sm">+20 2 XXXX XXXX</span>
+                <span className="text-sm">+201091852883</span>
               </div>
               <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
                 <Mail size={18} className="flex-shrink-0 mt-0.5" />
-                <span className="text-sm">info@vericheck.com</span>
+                <span className="text-sm">contact@veri-check.co</span>
               </div>
               <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
                 <MapPin size={18} className="flex-shrink-0 mt-0.5" />
