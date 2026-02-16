@@ -30,8 +30,8 @@ export default function HeroSection() {
   }
 
   const trustIndicators = [
-    { label: '50+', subtext: 'Industries Served' },
-    { label: '10K+', subtext: 'Inspections Completed' },
+    { label: '20+', subtext: 'Industries Served' },
+    { label: '2K+', subtext: 'Inspections Completed' },
     { label: '98%', subtext: 'Client Satisfaction' },
   ]
 

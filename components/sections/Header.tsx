@@ -154,7 +154,7 @@ export default function Header() {
           transition: 'all 0.1s ease-out',
         }}
       >
-        {/* <div className="relative w-64 h-32">
+         <div className="relative w-64 h-32">
           <Image 
             src="images/logo.png" 
             alt="VeriCheck Hero Logo" 
@@ -162,7 +162,7 @@ export default function Header() {
             className="object-contain" 
             priority
           />
-        </div> */}
+        </div> 
       </div>
     </>
   )
