@@ -96,9 +96,9 @@ const industries: Industry[] = [
     id: 'plastic',
     name: 'Plastic Product Quality',
     image: '/images/front-view-black-food-bowl-delivering-from-female-male.jpg',
-    shortDescription: 'Polymer Durability & Manufacturing Precision Inspection',
+    shortDescription: 'Polymer Durability & Precision Inspection',
     description:
-      'Comprehensive evaluation of material density, stress-crack resistance, and dimensional accuracy to ensure all plastic components meet industrial performance standards and chemical safety requirements.',
+      'Verify plastic component density, crack resistance, and dimensional accuracy for performance and chemical safety compliance.',
     stats: [
       { label: 'Certified Inspectors', value: '45+' },
       { label: 'Standards Covered', value: '12+' },

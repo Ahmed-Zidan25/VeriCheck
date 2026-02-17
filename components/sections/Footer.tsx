@@ -17,9 +17,11 @@ export default function Footer() {
     ],
     Industries: [
       { label: 'Textiles', href: '#industries' },
-      { label: 'Oil & Gas', href: '#industries' },
-      { label: 'Food & Agriculture', href: '#industries' },
-      { label: 'Consumer Electronics', href: '#industries' },
+      { label: 'Marble Facade', href: '#industries' },
+      { label: 'Cookware Quality', href: '#industries' },
+      { label: 'Food & Beverage Porcelain', href: '#industries' },
+      { label: 'Stainless Steel Tableware', href: '#industries' },
+      { label: 'Plastic Product Quality', href: '#industries' },
     ],
     Company: [
       { label: 'About Us', href: '#about' },
