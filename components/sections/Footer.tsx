@@ -1,160 +1,125 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image' // Added Image import
-import { motion } from 'framer-motion'
-import { Facebook, Linkedin, Mail, MessageCircle, Phone, MapPin } from 'lucide-react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear()
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
-  const footerLinks = {
-    Services: [
-      { label: 'Pre-Shipment Inspection', href: '#services' },
-      { label: 'Factory Audits', href: '#services' },
-      { label: 'Lab Testing', href: '#services' },
-      { label: 'Loading Supervision', href: '#services' },
-    ],
-    Industries: [
-      { label: 'Textiles', href: '#industries' },
-      { label: 'Marble Facade', href: '#industries' },
-      { label: 'Cookware Quality', href: '#industries' },
-      { label: 'Food & Beverage Porcelain', href: '#industries' },
-      { label: 'Stainless Steel Tableware', href: '#industries' },
-      { label: 'Plastic Product Quality', href: '#industries' },
-    ],
-    Company: [
-      { label: 'About Us', href: '#about' },
-      { label: 'Case Studies', href: '#cases' },
-      { label: 'Contact', href: '#contact' },
-      { label: 'Blog', href: '#' },
-    ],
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 20) // Lower threshold for smoother transition
+      
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0
+      setScrollProgress(scrollPercent)
+    }
 
-  const socialLinks = [
-    { icon: Facebook, href: 'https://www.facebook.com/veri-check/', label: 'Facebook' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/company/veri-check/', label: 'LinkedIn' },
-    { icon: MessageCircle, href: 'https://wa.me/201091852883', label: 'Whatsapp' },
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const navLinks = [
+    { label: 'Services', href: '#services' },
+    { label: 'Industries', href: '#industries' },
+    { label: 'About Us', href: '#about' },
+    { label: 'Contact', href: '#contact' },
   ]
 
   return (
-    <footer className="bg-vericheck-navy text-vericheck-white pt-20 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-5 gap-8 mb-16">
-          {/* Brand Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="md:col-span-1"
-          >
-            {/* Updated Logo Section */}
-            <div className="relative w-48 h-16 mb-4">
-              <Image 
-                src="images/Untitled-design.png" 
-                alt="VeriCheck Logo" 
-              /*   fill 
-                className="object-contain brightness-0 invert" // Turns logo white to match footer theme
-               */
-               />
-            </div>
-            
-            <p className="text-vericheck-grey text-sm mb-6 leading-relaxed">
-              Egypt's leading inspection and quality control services. Precision in every detail, trust in every check.
-            </p>
+    <>
+      <motion.div
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-vericheck-blue to-vericheck-lime z-[60]"
+        style={{ width: `${scrollProgress * 100}%` }}
+      />
 
-            {/* Social Links */}
-            <div className="flex gap-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon
-                return (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    whileHover={{ scale: 1.2, color: '#76BC21' }}
-                    className="text-vericheck-grey hover:text-vericheck-lime transition-colors"
-                    aria-label={social.label}
-                  >
-                    <Icon size={20} />
-                  </motion.a>
-                )
-              })}
-            </div>
-          </motion.div>
-
-          {/* Link Sections */}
-          {Object.entries(footerLinks).map(([title, links], index) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="font-bold text-vericheck-white mb-4">{title}</h4>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-vericheck-grey hover:text-vericheck-lime transition-colors text-sm"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="font-bold text-vericheck-white mb-4">Contact Us</h4>
-            <div className="space-y-3">
-              <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
-                <Phone size={18} className="flex-shrink-0 mt-0.5" />
-                <span className="text-sm">+201091852883</span>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-vericheck-navy shadow-xl py-2'
+            : 'bg-transparent py-6'
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          
+          {/* LOGO FIX: White background container that is always visible */}
+          <div className="flex items-center">
+            <Link href="/" className="group">
+              <div 
+                className={`relative transition-all duration-300 flex items-center justify-center bg-white rounded-md shadow-md ${
+                  isScrolled 
+                  ? 'w-36 h-10 sm:w-40 sm:h-12 p-1' 
+                  : 'w-44 h-14 sm:w-52 sm:h-16 p-2'
+                }`}
+              >
+                <Image 
+                  src="/images/Untitled-design.png" 
+                  alt="VeriCheck Logo" 
+                  fill
+                  priority
+                  className="object-contain p-1" // Inner padding so logo doesn't touch edges
+                />
               </div>
-              <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
-                <Mail size={18} className="flex-shrink-0 mt-0.5" />
-                <span className="text-sm">contact@veri-check.co</span>
-              </div>
-              <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
-                <MapPin size={18} className="flex-shrink-0 mt-0.5" />
-                <span className="text-sm">Cairo, Egypt</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            </Link>
+          </div> 
 
-        {/* Divider */}
-        <div className="h-px bg-vericheck-blue/20 mb-8" />
-
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-vericheck-grey text-sm text-center md:text-left">
-            © {currentYear} VeriCheck. All rights reserved. Precision in Every Detail.
-          </p>
-          <div className="flex gap-6 text-sm">
-            <Link href="#" className="text-vericheck-grey hover:text-vericheck-lime transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-vericheck-grey hover:text-vericheck-lime transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="#" className="text-vericheck-grey hover:text-vericheck-lime transition-colors">
-              Sitemap
-            </Link>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-white hover:text-vericheck-lime transition-colors text-sm font-semibold tracking-wide"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Button className="bg-vericheck-lime hover:bg-white hover:text-vericheck-navy text-vericheck-navy font-bold px-6 transition-all">
+              Get Quote
+            </Button>
           </div>
-        </div>
-      </div>
-    </footer>
+
+          {/* Mobile Menu Button */}
+          <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={30} /> : <Menu size={30} />}
+          </button>
+        </nav>
+
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-vericheck-navy border-t border-white/10"
+            >
+              <div className="px-6 py-8 space-y-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="block text-2xl text-white font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Button className="w-full bg-vericheck-lime text-vericheck-navy font-bold py-6 text-xl">
+                  Get Quote
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </>
   )
 }
