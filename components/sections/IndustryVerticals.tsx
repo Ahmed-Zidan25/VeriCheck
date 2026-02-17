@@ -270,11 +270,7 @@ export default function IndustryVerticals() {
                   <p className="text-gray-100 text-sm mb-4 leading-relaxed">
                     {industry.description}
                   </p>
-                  <div className="flex items-center gap-2 text-vericheck-lime font-semibold">
-                    <span>View Details</span>
-                    <ArrowRight size={16} />
-                  </div>
-                </div>
+                 </div>
               </div>
             </motion.div>
           ))}

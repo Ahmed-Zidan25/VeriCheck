@@ -56,7 +56,7 @@ export default function HeroSection() {
             className="w-full h-full object-cover"
           >
             <source 
-              src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/1164918_Man_Business_3840x2160.mp4" 
+              src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/0217.mp4" 
               type="video/mp4" 
             />
           </video>
