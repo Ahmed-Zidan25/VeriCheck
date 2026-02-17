@@ -53,20 +53,18 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center transition-transform hover:scale-105">
               <div 
-                className={`relative w-40 h-12 sm:w-48 sm:h-14 transition-all duration-300 ${
-                  isScrolled ? 'bg-white p-2 rounded-lg' : 'bg-transparent p-0'
-                }`}
-              >
-                <Image 
-                  src="/images/Untitled-design.png" // Ensure this path is correct for your transparent logo
-                  alt="VeriCheck Logo" 
-                  fill
-                  priority
-                  className={`object-contain transition-opacity duration-300 ${
-                    !isScrolled ? 'opacity-0' : 'opacity-100' // Make logo invisible when header is transparent
-                  }`}
-                />
-              </div>
+  className={`relative transition-all duration-300 flex items-center justify-center bg-white rounded-lg shadow-md overflow-hidden ${
+    isScrolled ? 'w-32 h-10 p-1' : 'w-40 h-14 p-2'
+  }`}
+>
+  <Image 
+    src="/images/Untitled-design.png" 
+    alt="VeriCheck Logo" 
+    fill
+    className="object-contain"
+    priority
+  />
+</div>
             </Link>
           </div> 
 
