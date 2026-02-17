@@ -33,8 +33,46 @@ export default function Header() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+  
+  {/* LOGO SECTION - Flex-1 pushes links to the right */}
+  <div className="flex-1 flex justify-start">
+    <Link href="/">
+      <div className={`relative transition-all duration-300 flex items-center justify-center bg-white rounded-lg shadow-md ${
+        isScrolled ? 'w-32 h-10' : 'w-44 h-14 sm:w-52 sm:h-16'
+      }`}>
+        <Image 
+          src="/images/Untitled-design.png" 
+          alt="VeriCheck Logo" 
+          fill 
+          className="object-contain p-2" 
+          priority 
+        />
+      </div>
+    </Link>
+  </div>
+
+  {/* LINKS SECTION - Increased gap and whitespace-nowrap prevents overlap */}
+  <div className="hidden md:flex items-center gap-10">
+    <div className="flex items-center gap-8">
+      {navLinks.map((link) => (
+        <Link
+          key={link.label}
+          href={link.href}
+          className="text-white hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
+        >
+          {link.label}
+        </Link>
+      ))}
+    </div>
+    <Button className="bg-vericheck-lime hover:bg-white text-vericheck-navy font-bold px-6">
+      Get Quote
+    </Button>
+  </div>
+</nav>
+   {/*
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO SECTION - Forced to stay on the left */}
+       
         <div className="flex-shrink-0">
           <Link href="/">
             <div className={`relative transition-all duration-300 flex items-center justify-center bg-white rounded-lg shadow-md ${
@@ -51,7 +89,7 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* NAVIGATION SECTION - Forced to stay on the right */}
+        NAVIGATION SECTION - Forced to stay on the right 
         <div className="hidden md:flex items-center gap-6 lg:gap-10">
           <div className="flex items-center gap-8">
             {navLinks.map((link) => (
@@ -69,11 +107,12 @@ export default function Header() {
           </Button>
         </div>
 
-        {/* MOBILE TOGGLE */}
+       
         <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
-      </nav>
+      </nav> 
+      */}
 
       {/* MOBILE MENU */}
       <AnimatePresence>
