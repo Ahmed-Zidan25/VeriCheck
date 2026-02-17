@@ -28,14 +28,14 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         isScrolled ? 'bg-vericheck-navy shadow-xl py-2' : 'bg-transparent py-6'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO - No White Box Here */}
-        <div className="flex-shrink-0">
+        {/* LOGO - Removed all bg-white and shadow classes */}
+        <div className="flex-shrink-0 relative z-[110]">
           <Link href="/">
             <div className={`relative transition-all duration-300 ${
                 isScrolled ? 'w-32 h-10' : 'w-40 h-14 sm:w-52 sm:h-16'
@@ -53,24 +53,26 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* NAVIGATION - desktop */}
+        {/* NAVIGATION - Using justify-between ensures no overlapping */}
         <div className="hidden md:flex items-center gap-8 lg:gap-12">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-white hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Button className="bg-vericheck-lime hover:bg-white text-vericheck-navy font-bold px-6 transition-all">
+          <div className="flex items-center gap-6 lg:gap-10">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-white hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <Button className="bg-vericheck-lime hover:bg-white text-vericheck-navy font-bold px-6">
             Get Quote
           </Button>
         </div>
 
         {/* MOBILE TOGGLE */}
-        <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+        <button className="md:hidden text-white relative z-[110]" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </nav>
@@ -95,9 +97,6 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Button className="w-full bg-vericheck-lime text-vericheck-navy font-bold py-4">
-                Get Quote
-              </Button>
             </div>
           </motion.div>
         )}
