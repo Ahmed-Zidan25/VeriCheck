@@ -15,7 +15,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
-      setIsScrolled(scrollTop > 50)
+      setIsScrolled(scrollTop > 50) // Adjust threshold if needed
       
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0
@@ -44,23 +44,29 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-vericheck-navy/95 shadow-lg backdrop-blur-md py-2'
+            ? 'bg-vericheck-navy shadow-lg backdrop-blur-md py-2' // Changed opacity to make it solid navy on scroll
             : 'bg-transparent py-4'
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          {/* Fixed Logo Layout */}
+          {/* Logo Section */}
           <div className="flex items-center">
-            <Link href="/" className="relative w-40 h-12 transition-transform hover:scale-105">
-              <Image 
-                src="/images/Untitled-design.png" 
-                alt="VeriCheck Logo" 
-                fill
-                priority
-                className={`object-contain transition-all duration-300 ${
-                  !isScrolled ? 'brightness-0 invert' : 'brightness-100'
+            <Link href="/" className="flex items-center transition-transform hover:scale-105">
+              <div 
+                className={`relative w-40 h-12 sm:w-48 sm:h-14 transition-all duration-300 ${
+                  isScrolled ? 'bg-white p-2 rounded-lg' : 'bg-transparent p-0'
                 }`}
-              />
+              >
+                <Image 
+                  src="/images/Untitled-design.png" // Ensure this path is correct for your transparent logo
+                  alt="VeriCheck Logo" 
+                  fill
+                  priority
+                  className={`object-contain transition-opacity duration-300 ${
+                    !isScrolled ? 'opacity-0' : 'opacity-100' // Make logo invisible when header is transparent
+                  }`}
+                />
+              </div>
             </Link>
           </div> 
 

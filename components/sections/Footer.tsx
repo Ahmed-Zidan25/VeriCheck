@@ -53,7 +53,7 @@ export default function Footer() {
             {/* Updated Logo Section */}
             <div className="relative w-48 h-16 mb-4">
               <Image 
-                src="images/logo.jpg" 
+                src="images/Untitled-design.png" 
                 alt="VeriCheck Logo" 
               /*   fill 
                 className="object-contain brightness-0 invert" // Turns logo white to match footer theme
