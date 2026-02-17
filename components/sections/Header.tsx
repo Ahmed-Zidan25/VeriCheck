@@ -90,7 +90,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-2">
               <div className="relative w-40 h-12">
                 <Image 
-                  src="images/logo.png" 
+                  src="images/logo.jpg" 
                   alt="VeriCheck Logo" 
                   /* fill 
                   className="object-contain brightness-0 invert" // This makes the logo white for the dark nav */

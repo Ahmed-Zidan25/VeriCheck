@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image' // Added Image import
 import { motion } from 'framer-motion'
-import { Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Linkedin, Mail, MessageCircle, Phone, MapPin } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -32,7 +32,7 @@ export default function Footer() {
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/veri-check/', label: 'Facebook' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/veri-check/', label: 'LinkedIn' },
-    
+    { icon: MessageCircle, href: 'https://wa.me/201091852883', label: 'Whatsapp' },
   ]
 
   return (
@@ -51,7 +51,7 @@ export default function Footer() {
             {/* Updated Logo Section */}
             <div className="relative w-48 h-16 mb-4">
               <Image 
-                src="images/logo.png" 
+                src="images/logo.jpg" 
                 alt="VeriCheck Logo" 
               /*   fill 
                 className="object-contain brightness-0 invert" // Turns logo white to match footer theme

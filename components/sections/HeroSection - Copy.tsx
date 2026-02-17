@@ -43,15 +43,21 @@ export default function HeroSection() {
       {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          poster="/images/textiles.jpg"
-        >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        </video>
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full h-full object-cover"
+  poster="/images/textiles.jpg"
+  // Optional: ensures the video is ready before trying to play
+  preload="auto" 
+>
+  <source 
+    src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/0217.mp4" 
+    type="video/mp4" 
+  />
+  Your browser does not support the video tag.
+</video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
       </div>
 

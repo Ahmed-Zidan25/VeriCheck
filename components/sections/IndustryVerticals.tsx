@@ -27,7 +27,98 @@ const industries: Industry[] = [
       { label: 'Compliance Rate', value: '99.2%' },
     ],
   },
+   {
+    id: 'marble-facade',
+    name: 'Marble Facade Quality',
+    image: '/images/photorealistic-stone-wall-surface-used-interior-design.jpg',
+    shortDescription: 'Premium Marble Facade Quality Inspection',
+    description:
+      'Structural integrity, aesthetic consistency, and weather resistance of marble panels used in exterior building envelopes, ensuring they are free from fractures, deep veining weaknesses, or surface degradation.',
+    stats: [
+      { label: 'Certified Inspectors', value: '45+' },
+      { label: 'Standards Covered', value: '12+' },
+      { label: 'Client Retention', value: '94%' },
+    ],
+  },
   {
+    id: 'cookware',
+    name: 'Cookware Quality',
+    image: '/images/woman-buys-dishes-store.jpg',
+    shortDescription: 'Ensuring Superior Cookware Quality Standards',
+    description:
+      'Rigorous testing of materials, thermal performance, and coating safety to guarantee that kitchenware meets international food-grade standards and durability requirements.',
+    stats: [
+      { label: 'Certified Inspectors', value: '45+' },
+      { label: 'Standards Covered', value: '12+' },
+      { label: 'Client Retention', value: '94%' },
+    ],
+  },
+  {
+    id: 'carpet',
+    name: 'Carpet Quality',
+    image: '/images/view-felt-fabric-different-colors.jpg',
+    shortDescription: 'Textile Density & Fiber Durability Analysis',
+    description:
+      'Expert analysis of fiber density, weave precision, and material purity to ensure superior comfort, long-term wear resistance, and adherence to international safety standards.',
+    stats: [
+      { label: 'Certified Inspectors', value: '45+' },
+      { label: 'Standards Covered', value: '12+' },
+      { label: 'Client Retention', value: '94%' },
+    ],
+  },
+  {
+    id: 'food-beverage',
+    name: 'Food & Beverage Porcelain',
+    image: '/images/delicate-white-tea-set-milk-bottle-mouthwatering-sponge-cake-with-chocolate-cream-grapefruits.jpg',
+    shortDescription: 'Ceramic & Porcelain Food-Grade Safety Inspection',
+    description:
+      'Specialized evaluation of lead and cadmium leaching levels, thermal shock resistance, and glaze durability to ensure all porcelain products meet stringent international food safety regulations and hospitality standards.',
+    stats: [
+      { label: 'Certified Inspectors', value: '45+' },
+      { label: 'Standards Covered', value: '12+' },
+      { label: 'Client Retention', value: '94%' },
+    ],
+  },
+  {
+    id: 'stainless-steel',
+    name: 'Stainless Steel Tableware',
+    image: '/images/woman-pink-blouse-buys-dishes-store.jpg',
+    shortDescription: 'Cutlery & Flatware Metallurgy & Finish Inspection',
+    description:
+      'Precision verification of steel grades (such as 18/10 or 18/8), surface polishing quality, and corrosion resistance to ensure high-performance durability and compliance with international health standards.',
+    stats: [
+      { label: 'Certified Inspectors', value: '45+' },
+      { label: 'Standards Covered', value: '12+' },
+      { label: 'Client Retention', value: '94%' },
+    ],
+  },
+   {
+    id: 'plastic',
+    name: 'Plastic Product Quality',
+    image: '/images/front-view-black-food-bowl-delivering-from-female-male.jpg',
+    shortDescription: 'Polymer Durability & Manufacturing Precision Inspection',
+    description:
+      'Comprehensive evaluation of material density, stress-crack resistance, and dimensional accuracy to ensure all plastic components meet industrial performance standards and chemical safety requirements.',
+    stats: [
+      { label: 'Certified Inspectors', value: '45+' },
+      { label: 'Standards Covered', value: '12+' },
+      { label: 'Client Retention', value: '94%' },
+    ],
+  },
+    {
+    id: 'glassware',
+    name: 'Glassware Quality',
+    image: '/images/woman-holding-glass-from-shelf-homeware-store.jpg',
+    shortDescription: 'Precision Glassware & Crystal Clarity Inspection',
+    description:
+      'Specialized verification of structural uniformity, rim smoothness, and optical clarity to ensure all glassware is free from internal stress, bubbles, or imperfections that compromise safety and elegance.',
+    stats: [
+      { label: 'Certified Inspectors', value: '45+' },
+      { label: 'Standards Covered', value: '12+' },
+      { label: 'Client Retention', value: '94%' },
+    ],
+  },
+ /*  {
     id: 'oil-gas',
     name: 'Oil & Gas',
     image: '/images/oil-gas.jpg',
@@ -91,7 +182,7 @@ const industries: Industry[] = [
       { label: 'Regulatory Standards', value: '25+' },
       { label: 'Certification Rate', value: '98.9%' },
     ],
-  },
+  }, */
 ]
 
 const containerVariants = {
