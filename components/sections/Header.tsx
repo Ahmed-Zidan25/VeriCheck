@@ -86,18 +86,26 @@ export default function Header() {
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-20">
           {/* Logo - Nav Version */}
-          <div className="flex items-center gap-2" ref={navLogoRef}>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="relative w-40 h-12">
-                <Image 
-                  src="images/logo.jpg" 
-                  alt="VeriCheck Logo" 
-                  /* fill 
-                  className="object-contain brightness-0 invert" // This makes the logo white for the dark nav */
-                />
-              </div>
-            </Link>
-          </div> 
+          <div className="flex items-center" ref={navLogoRef}>
+  <Link href="/" className="flex items-center transition-transform hover:scale-105">
+    {/* The container needs relative positioning for 'fill' to work. 
+        Adjust w-48 and h-14 to match your logo's actual proportions.
+    */}
+    <div className="relative w-40 h-12 sm:w-48 sm:h-14">
+      <Image 
+        src="/images/logo.jpg" // Added leading slash for public folder
+        alt="VeriCheck Logo" 
+        fill
+        priority
+        className={`object-contain transition-all duration-300 ${
+          isScrolled ? 'brightness-100' : 'brightness-0 invert'
+        }`} 
+      />
+    </div>
+  </Link>
+</div>
+
+
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
