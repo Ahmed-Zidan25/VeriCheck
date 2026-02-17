@@ -39,7 +39,7 @@ export default function RootLayout({
 
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import Header from './components/Header' // Check if this path is correct for your structure!
+import Header from '../components/Header' // Check if this path is correct for your structure!
 
 import './globals.css'
 
