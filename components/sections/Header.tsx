@@ -53,7 +53,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="relative w-40 h-12 transition-transform hover:scale-105">
               <Image 
-                src="/images/logo.jpg" 
+                src="/images/Untitled-design.png" 
                 alt="VeriCheck Logo" 
                 fill
                 priority
