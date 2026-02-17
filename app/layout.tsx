@@ -37,10 +37,9 @@ export default function RootLayout({
 } */
 
 
-
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import Header from '@/components/Header' // Import your fixed Header
+import Header from './components/Header' // Check if this path is correct for your structure!
 
 import './globals.css'
 
@@ -49,7 +48,7 @@ const _geistMono = Geist_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'VeriCheck - Precision Inspection & Quality Control',
-  description: 'Leading inspection and quality control services across Egypt. Precision in every detail, trust in every check.',
+  description: 'Leading inspection and quality control services in Egypt.',
 }
 
 export default function RootLayout({
@@ -60,9 +59,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="font-sans antialiased">
+        {/* Only one Header here for the whole app */}
         <Header /> 
         <main>{children}</main>
-        {/* <Footer /> */}
       </body>
     </html>
   )
