@@ -34,7 +34,7 @@ export default function Header() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO SECTION - No white box, auto-scaling */}
+        {/* LOGO - No White Box Here */}
         <div className="flex-shrink-0">
           <Link href="/">
             <div className={`relative transition-all duration-300 ${
@@ -53,26 +53,24 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* LINKS SECTION - Proper spacing to prevent clash */}
-        <div className="hidden md:flex items-center ml-auto gap-8 lg:gap-12">
-          <div className="flex items-center gap-6 lg:gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-white hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        {/* NAVIGATION - desktop */}
+        <div className="hidden md:flex items-center gap-8 lg:gap-12">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="text-white hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
+            >
+              {link.label}
+            </Link>
+          ))}
           <Button className="bg-vericheck-lime hover:bg-white text-vericheck-navy font-bold px-6 transition-all">
             Get Quote
           </Button>
         </div>
 
         {/* MOBILE TOGGLE */}
-        <button className="md:hidden text-white ml-4" onClick={() => setIsOpen(!isOpen)}>
+        <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </nav>
@@ -91,7 +89,7 @@ export default function Header() {
                 <Link 
                   key={link.label} 
                   href={link.href} 
-                  className="block text-xl text-white font-semibold hover:text-vericheck-lime" 
+                  className="block text-xl text-white font-semibold" 
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
