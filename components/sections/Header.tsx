@@ -1,102 +1,106 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks = [
-    { label: "Services", href: "#services" },
-    { label: "Industries", href: "#industries" },
-    { label: "About Us", href: "#about" },
-    { label: "Contact", href: "#contact" },
-  ];
+    { label: 'Services', href: '#services' },
+    { label: 'Industries', href: '#industries' },
+    { label: 'About Us', href: '#about' },
+    { label: 'Contact', href: '#contact' },
+  ]
 
   return (
-    <>
-      {/* Header (always visible, always blue) */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-vericheck-navy border-b border-white/10 shadow-md vc-no-mirror">
-      <nav className="hidden md:flex items-center gap-8 leading-none">
+    <header
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+        isScrolled ? 'bg-vericheck-navy shadow-xl py-2' : 'bg-transparent py-6'
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        
+        {/* LOGO IMAGE - Replaced text logo */}
+        <div className="flex-shrink-0">
+          <Link href="/">
+            <div className={`relative transition-all duration-300 ${
+                isScrolled ? 'w-32 h-10' : 'w-40 h-14 sm:w-52 sm:h-16'
+              }`}>
+              <Image 
+                src="/images/Untitled-design.png" 
+                alt="VeriCheck Logo" 
+                fill 
+                className={`object-contain transition-all duration-300 ${
+                  !isScrolled ? 'brightness-0 invert' : ''
+                }`}
+                priority 
+              />
+            </div>
+          </Link>
+        </div>
 
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center gap-2 group">
-              <motion.div
-                className="w-8 h-8 bg-gradient-to-br from-vericheck-blue to-vericheck-lime rounded-lg flex items-center justify-center font-bold text-white text-sm"
-                whileHover={{
-                  scale: 1.1,
-                  boxShadow: "0 0 30px rgba(0,114,206,0.8)",
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-              >
-                V
-              </motion.div>
-
-              <span className="font-bold text-white hidden sm:inline">
-                VeriCheck
-              </span>
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+        {/* NAVIGATION LINKS - Aligned to the right using ml-auto */}
+        <div className="hidden md:flex items-center ml-auto gap-8 lg:gap-12">
+          <div className="flex items-center gap-6 lg:gap-10">
             {navLinks.map((link) => (
               <Link
-  key={link.label}
-  href={link.href}
-  className="text-white/90 hover:text-white transition-colors text-sm font-medium"
->
-  <span className="block leading-none whitespace-nowrap overflow-hidden text-ellipsis">
-    {link.label}
-  </span>
-</Link>
+                key={link.label}
+                href={link.href}
+                className="text-white hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
+              >
+                {link.label}
+              </Link>
             ))}
-
-            <Button className="bg-vericheck-lime hover:bg-vericheck-lime/90 text-vericheck-navy font-semibold">
-              Get Quote
-            </Button>
           </div>
+          <Button className="bg-vericheck-lime hover:bg-white text-vericheck-navy font-bold px-6 transition-all">
+            Get Quote
+          </Button>
+        </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </nav>
+        {/* MOBILE TOGGLE */}
+        <button className="md:hidden text-white ml-4" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={30} /> : <Menu size={30} />}
+        </button>
+      </nav>
 
-        {/* Mobile Navigation */}
+      {/* MOBILE MENU */}
+      <AnimatePresence>
         {isOpen && (
           <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-vericheck-navy border-t border-white/10"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
           >
-            <div className="px-4 py-4 space-y-4">
+            <div className="px-6 py-8 space-y-6">
               {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="block text-white/90 hover:text-white transition-colors font-medium"
+                <Link 
+                  key={link.label} 
+                  href={link.href} 
+                  className="block text-xl text-white font-semibold" 
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-
-              <Button className="w-full bg-vericheck-lime hover:bg-vericheck-lime/90 text-vericheck-navy font-semibold">
-                Get Quote
-              </Button>
             </div>
           </motion.div>
         )}
-      </header>
-    </>
-  );
+      </AnimatePresence>
+    </header>
+  )
 }
