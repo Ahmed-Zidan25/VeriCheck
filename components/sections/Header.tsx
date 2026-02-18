@@ -19,7 +19,8 @@ export default function Header() {
   return (
     <>
       {/* Header (always visible, always blue) */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-vericheck-navy border-b border-white/10 shadow-md">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-vericheck-navy border-b border-white/10 shadow-md vc-no-mirror">
+
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center gap-2">

@@ -83,6 +83,22 @@ body {
     --sidebar-ring: 216 92% 65%;
   }
 }
+.vc-no-mirror a::before,
+.vc-no-mirror a::after,
+.vc-no-mirror button::before,
+.vc-no-mirror button::after,
+.vc-no-mirror span::before,
+.vc-no-mirror span::after {
+  content: none !important;
+  display: none !important;
+}
+
+.vc-no-mirror a,
+.vc-no-mirror button,
+.vc-no-mirror span {
+  text-shadow: none !important;
+  filter: none !important;
+}
 
 @layer base {
   * {
