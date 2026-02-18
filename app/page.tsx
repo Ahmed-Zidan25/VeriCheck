@@ -9,7 +9,7 @@ import Footer from '@/components/sections/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-vericheck-white">
+    <div className="min-h-screen bg-vericheck-white">
       <HeroSection />
       <VisionMission />
       <ServicesGrid />
@@ -18,6 +18,6 @@ export default function Home() {
       <EgyptAdvantage />
       <ContactForm />
       <Footer />
-    </main>
+    </div>
   )
 }
