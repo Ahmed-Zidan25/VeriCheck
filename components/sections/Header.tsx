@@ -25,7 +25,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
+   <header className="fixed top-0 left-0 w-full z-50 bg-vericheck-navy border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
@@ -74,7 +74,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.18 }}
-            className="lg:hidden bg-vericheck-navy/95 backdrop-blur-md border-t border-white/10"
+            className="lg:hidden bg-vericheck-navy/95 border-t border-white/10"
           >
             <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-5">
               {navLinks.map((link) => (
