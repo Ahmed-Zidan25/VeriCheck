@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Play } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
@@ -30,7 +30,7 @@ export default function HeroSection() {
   }
 
   const trustIndicators = [
-    { label: '50+', subtext: 'Industries Served' },
+    { label: '20+', subtext: 'Industries Served' },
     { label: '10K+', subtext: 'Inspections Completed' },
     { label: '98%', subtext: 'Client Satisfaction' },
   ]
@@ -38,113 +38,79 @@ export default function HeroSection() {
   return (
     <section
       id="hero-section"
-      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-vericheck-navy pt-20"
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-vericheck-navy pt-32"
     >
       {/* Video Background with Overlay */}
-    <div className="absolute inset-0 z-0">
-        {!videoError ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            onError={() => setVideoError(true)} // Switches to image if URL breaks
-            className="w-full h-full object-cover"
-          >
-            <source 
-              src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/0217.mp4" 
-              type="video/mp4" 
-            />
-          </video>
-        ) : (
-          /* Fallback Placeholder Image - Only shows if video fails */
-          <div 
-            className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/textiles.jpg')" }}
-          />
-        )}
-
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
-          aria-hidden="true"
-        />
+      <div className="absolute inset-0 z-0">
+        <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full h-full object-cover"
+  poster="/images/textiles.jpg"
+  // Optional: ensures the video is ready before trying to play
+  preload="auto" 
+>
+  <source 
+    src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/0217.mp4" 
+    type="video/mp4" 
+  />
+  Your browser does not support the video tag.
+</video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center">
         <motion.div
-          className="text-center space-y-8"
+          className="text-center space-y-6" // Reduced spacing between elements
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Main Headline */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <motion.h1
-              className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight text-balance"
-              variants={itemVariants}
-            >
+            <motion.h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight">
               VeriCheck
             </motion.h1>
-            <motion.div
-              className="h-1 w-20 bg-gradient-to-r from-vericheck-blue to-vericheck-lime mx-auto"
-              initial={{ width: 0 }}
-              animate={{ width: 80 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            />
-            <motion.p
-              className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto text-balance leading-relaxed"
-              variants={itemVariants}
-            >
+            <motion.div className="h-1.5 w-20 bg-gradient-to-r from-vericheck-blue to-vericheck-lime mx-auto rounded-full" />
+            <motion.p className="text-xl sm:text-2xl text-white/90 font-medium">
               Precision in Every Detail, Trust in Every Check
             </motion.p>
           </motion.div>
 
-          {/* Subheading */}
-          <motion.p
-            className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
-            variants={itemVariants}
-          >
-            Egypt's leading inspection and quality control services. From textiles to pharmaceuticals, we deliver precision, compliance, and confidence.
+          <motion.p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed" variants={itemVariants}>
+            VeriCheck is a leading Third Party Inspection Company in Egypt providing professional Pre Shipment Inspection and Quality Control.
           </motion.p>
 
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
-            variants={itemVariants}
-          >
+          {/* CTA Button */}
+          <motion.div className="flex justify-center items-center" variants={itemVariants}>
             <Link href="#contact">
-              <Button className="bg-vericheck-lime hover:bg-vericheck-lime/90 text-vericheck-navy font-bold text-lg px-8 py-6 rounded-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(118,188,33,0.4)]">
+              <Button className="bg-vericheck-lime hover:bg-vericheck-lime/90 text-vericheck-navy font-bold text-lg px-8 py-6 rounded-lg">
                 Get Started
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 font-bold text-lg px-8 py-6 rounded-lg backdrop-blur-sm"
-            >
-              <Play size={20} className="mr-2" />
-              Watch Demo
-            </Button>
           </motion.div>
         </motion.div>
 
-        {/* Trust Indicators */}
+        {/* Analytics/Trust Indicators - MOVED CLOSER TO BUTTON */}
         <motion.div
-          className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
+          className="mt-6 md:mt-8 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto relative z-20 pb-20"
           variants={containerVariants}
         >
           {trustIndicators.map((indicator, index) => (
             <motion.div
               key={index}
-              className="text-center space-y-2 backdrop-blur-sm bg-white/5 p-4 rounded-lg border border-white/10 hover:border-white/20 transition-colors"
+              className="text-center space-y-1 backdrop-blur-md bg-white/10 p-4 rounded-xl border border-white/20 hover:border-vericheck-lime/50 transition-all shadow-2xl"
               variants={itemVariants}
-              whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              whileHover={{ y: -5 }}
             >
-              <div className="text-2xl sm:text-3xl font-bold text-vericheck-lime">
+              <div className="text-xl sm:text-3xl font-extrabold text-vericheck-lime">
                 {indicator.label}
               </div>
-              <div className="text-xs sm:text-sm text-white/70">
+              <div className="text-[10px] sm:text-sm font-medium uppercase tracking-wider text-white/80">
                 {indicator.subtext}
               </div>
             </motion.div>
@@ -152,14 +118,14 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - MOVED TO ABSOLUTE BOTTOM */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-        animate={{ y: [0, 12, 0] }}
+        className="absolute bottom-1 left-1/2 transform -translate-x-1/2 z-30"
+        animate={{ y: [0, 6, 0] }} // Reduced bounce amplitude
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white/60 rounded-full mt-2" />
+        <div className="w-5 h-8 border-2 border-white/20 rounded-full flex justify-center opacity-40">
+          <div className="w-1 h-1.5 bg-vericheck-lime rounded-full mt-1.5" />
         </div>
       </motion.div>
     </section>
