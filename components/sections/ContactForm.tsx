@@ -22,7 +22,8 @@ const services = [
   'Food & Beverage Porcelain',
   'Stainless Steel Tableware',
   'Plastic Product Quality',
-  'Glassware Quality'
+  'Glassware Quality',
+  'Other'
 ]
 
 const steps = [
