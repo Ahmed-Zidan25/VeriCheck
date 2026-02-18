@@ -34,14 +34,14 @@ export default function Header() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO IMAGE - Replaced text logo */}
+        {/* LOGO - White background and shadow completely removed */}
         <div className="flex-shrink-0">
           <Link href="/">
             <div className={`relative transition-all duration-300 ${
                 isScrolled ? 'w-32 h-10' : 'w-40 h-14 sm:w-52 sm:h-16'
               }`}>
               <Image 
-                src="/images/logo.jpg" 
+                src="/images/Untitled-design.png" 
                 alt="VeriCheck Logo" 
                 fill 
                 className={`object-contain transition-all duration-300 ${
@@ -53,7 +53,7 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* NAVIGATION LINKS - Aligned to the right using ml-auto */}
+        {/* NAVIGATION - Aligned to the right using ml-auto */}
         <div className="hidden md:flex items-center ml-auto gap-8 lg:gap-12">
           <div className="flex items-center gap-6 lg:gap-10">
             {navLinks.map((link) => (
