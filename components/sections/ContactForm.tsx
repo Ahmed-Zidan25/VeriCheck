@@ -15,12 +15,14 @@ import {
 } from '@/components/ui/select'
 
 const services = [
-  'Pre-Shipment Inspection',
-  'Factory Audits',
-  'Lab Testing',
-  'Loading Supervision',
-  'Social Compliance',
-  'Technical Staffing',
+  'Textiles & Apparel',
+  'Marble Facade Quality',
+  'Cookware Quality',
+  'Carpet Quality',
+  'Food & Beverage Porcelain',
+  'Stainless Steel Tableware',
+  'Plastic Product Quality',
+  'Glassware Quality'
 ]
 
 const steps = [
@@ -301,12 +303,15 @@ export default function ContactForm() {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="Textiles">Textiles</SelectItem>
-                            <SelectItem value="Oil & Gas">Oil & Gas</SelectItem>
-                            <SelectItem value="Food & Agriculture">
-                              Food & Agriculture
+                            <SelectItem value="Food & Beverage Porcelain">Food & Beverage Porcelain</SelectItem>
+                            <SelectItem value="Glassware">
+                              Glassware
                             </SelectItem>
-                            <SelectItem value="Consumer Electronics">
-                              Consumer Electronics
+                            <SelectItem value="Plastic Product">
+                              Plastic Product
+                            </SelectItem>
+                            <SelectItem value="Plastic Product">
+                              Marble Facade
                             </SelectItem>
                             <SelectItem value="Other">Other</SelectItem>
                           </SelectContent>
