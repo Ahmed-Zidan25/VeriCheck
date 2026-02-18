@@ -48,11 +48,11 @@ export default function Header() {
   priority 
 /> */}
               <Image 
-                src="/images/design.svg" 
+                src="/images/trans.png" 
                 alt="VeriCheck Logo" 
                 fill 
                 className={`object-contain transition-all duration-300 ${
-                  !isScrolled ? 'brightness-0 invert' : ''
+                 /*  !isScrolled ? 'brightness-0 invert' : '' */
                 }`}
                 priority 
               /> 
