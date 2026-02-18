@@ -16,13 +16,13 @@ export default function Footer() {
     ],
     Industries: [
       { label: 'Textiles', href: '#industries' },
-      { label: 'Oil & Gas', href: '#industries' },
-      { label: 'Food & Agriculture', href: '#industries' },
-      { label: 'Consumer Electronics', href: '#industries' },
+      { label: 'Marble Facade Quality', href: '#industries' },
+      { label: 'Cookware Quality', href: '#industries' },
+      { label: 'Food & Beverage Porcelain', href: '#industries' },
     ],
     Company: [
       { label: 'About Us', href: '#about' },
-      { label: 'Case Studies', href: '#cases' },
+      { label: 'Our Vision & Mission', href: '#VisionMission' },
       { label: 'Contact', href: '#contact' },
       
     ],
@@ -48,9 +48,16 @@ export default function Footer() {
             className="md:col-span-1"
           >
             <div className="flex items-center gap-2 mb-4">
-              <CheckCircle2 className="w-8 h-8 text-vericheck-lime" />
-              <span className="text-xl font-bold">VeriCheck</span>
-            </div>
+  <div className="relative w-40 h-12"> {/* Adjust width and height based on your logo's aspect ratio */}
+    <Image 
+      src="/images/Untitled-design.png" 
+      alt="VeriCheck Logo" 
+      fill
+      className="object-contain brightness-0 invert" // Use invert if you are placing it on a dark footer
+      priority
+    />
+  </div>
+</div>
             <p className="text-vericheck-grey text-sm mb-6 leading-relaxed">
               Egypt's leading inspection and quality control services. Precision in every detail, trust in every check.
             </p>
