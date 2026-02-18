@@ -40,7 +40,14 @@ export default function Header() {
             <div className={`relative transition-all duration-300 ${
                 isScrolled ? 'w-32 h-10' : 'w-40 h-14 sm:w-52 sm:h-16'
               }`}>
-              <Image 
+                <Image 
+  src="/images/Untitled-design.svg" 
+  alt="VeriCheck Logo" 
+  fill 
+  className="object-contain" // Colors will now appear normally
+  priority 
+/>
+              {/* <Image 
                 src="/images/Untitled-design.svg" 
                 alt="VeriCheck Logo" 
                 fill 
@@ -48,7 +55,7 @@ export default function Header() {
                   !isScrolled ? 'brightness-0 invert' : ''
                 }`}
                 priority 
-              />
+              /> */}
             </div>
           </Link>
         </div>
