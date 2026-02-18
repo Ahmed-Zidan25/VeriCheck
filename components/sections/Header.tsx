@@ -26,33 +26,32 @@ export default function Header() {
           VeriCheck
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center ml-auto gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="flex-shrink-0 whitespace-nowrap text-white text-sm font-semibold hover:text-lime-400 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+       <nav className="hidden lg:flex items-center ml-auto gap-8">
+  {navLinks.map((link) => (
+    <Link
+      key={link.label}
+      href={link.href}
+      className="text-white font-semibold whitespace-nowrap"
+    >
+      {link.label}
+    </Link>
+  ))}
 
-          <Link
-            href="#quote"
-            className="flex-shrink-0 bg-lime-500 hover:bg-lime-400 text-black font-semibold px-5 py-2 rounded-lg transition-colors"
-          >
-            Get Quote
-          </Link>
-        </nav>
+  <Link
+    href="#quote"
+    className="bg-vericheck-lime text-black px-6 py-2 rounded-lg font-semibold"
+  >
+    Get Quote
+  </Link>
+</nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className="lg:hidden ml-auto text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+{/* Mobile Toggle */}
+<button
+  className="lg:hidden ml-auto text-white"
+  onClick={() => setIsOpen(!isOpen)}
+>
+  {isOpen ? <X size={28} /> : <Menu size={28} />}
+</button>
       </div>
 
       {/* Mobile Menu */}
@@ -63,7 +62,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10"
+            className="lg:hidden bg-vericheck-navy"
           >
             <div className="flex flex-col px-6 py-6 gap-5">
               {navLinks.map((link) => (
