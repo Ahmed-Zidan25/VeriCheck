@@ -13,7 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-vericheck-white">
       <Header />
       <HeroSection />
-	  <VisionMission />
+	    <VisionMission />
       <ServicesGrid />
       <IndustryVerticals />
       <SuggestedTopics />
