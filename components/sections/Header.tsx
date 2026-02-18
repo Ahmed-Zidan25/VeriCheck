@@ -41,7 +41,7 @@ export default function Header() {
                 isScrolled ? 'w-32 h-10' : 'w-40 h-14 sm:w-52 sm:h-16'
               }`}>
               <Image 
-                src="/images/Untitled-design.png" 
+                src="/images/Untitled-design.svg" 
                 alt="VeriCheck Logo" 
                 fill 
                 className={`object-contain transition-all duration-300 ${

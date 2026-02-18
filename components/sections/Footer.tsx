@@ -51,7 +51,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
   <div className="relative w-40 h-12"> {/* Adjust width and height based on your logo's aspect ratio */}
     <Image 
-      src="/images/Untitled-design.png" 
+      src="/images/Untitled-design.svg" 
       alt="VeriCheck Logo" 
       fill
       className="object-contain brightness-0 invert" // Use invert if you are placing it on a dark footer
