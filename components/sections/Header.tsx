@@ -48,7 +48,7 @@ export default function Header() {
   priority 
 /> */}
               <Image 
-                src="/images/image.png" 
+                src="/images/design.svg" 
                 alt="VeriCheck Logo" 
                 fill 
                 className={`object-contain transition-all duration-300 ${
