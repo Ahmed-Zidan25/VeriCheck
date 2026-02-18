@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'VeriCheck - Precision Inspection & Quality Control',
   description: 'Leading inspection and quality control services across Egypt. Precision in every detail, trust in every check.',
   generator: 'v0.app',
-  metadataBase: new URL('https://vericheck.com'),
+  metadataBase: new URL('https://veri-check.co'),
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -24,14 +24,16 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+import Header from "@/components/Header";
+import "./globals.css";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <Header />
+        {children}
+      </body>
     </html>
-  )
+  );
 }
