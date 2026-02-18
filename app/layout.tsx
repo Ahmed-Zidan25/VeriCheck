@@ -31,8 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
-      <Footer />
+      <body className="font-sans antialiased">{children}<Footer /></body>
+      
     </html>
   )
 }
