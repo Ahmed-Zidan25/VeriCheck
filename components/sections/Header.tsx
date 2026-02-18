@@ -37,23 +37,22 @@ export default function Header() {
 
         {/* Desktop Navigation (ONLY lg+) */}
         <nav className="hidden lg:flex items-center ml-auto gap-6 xl:gap-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="flex-shrink-0 whitespace-nowrap text-white text-sm font-semibold hover:text-vericheck-lime transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+  {navLinks.map((link) => (
+    <Link
+      key={link.label}
+      href={link.href}
+      className="flex-shrink-0 whitespace-nowrap text-white text-sm font-semibold hover:text-vericheck-lime transition-colors [text-shadow:none] [filter:none]"
+    >
+      {link.label}
+    </Link>
+  ))}
 
-          <Link
-            href="#quote"
-            className="flex-shrink-0 bg-vericheck-lime hover:bg-white text-vericheck-navy font-semibold px-6 py-2 rounded-lg transition-colors"
-          >
-            Get Quote
-          </Link>
-        </nav>
+  <Link
+    href="#quote"
+    className="flex-shrink-0 bg-vericheck-lime hover:bg-white text-vericheck-navy font-semibold px-6 py-2 rounded-lg transition-colors [filter:none]"
+  >
+    Get Quote
+  </Link>
 
         {/* Mobile Toggle (ONLY <lg) */}
         <button
@@ -78,14 +77,14 @@ export default function Header() {
           >
             <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-5">
               {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-white text-base font-medium hover:text-vericheck-lime transition-colors"
-                >
-                  {link.label}
-                </Link>
+  <Link
+    key={link.label}
+    href={link.href}
+    onClick={() => setIsOpen(false)}
+    className="text-white text-base font-medium hover:text-vericheck-lime transition-colors [text-shadow:none] [filter:none]"
+  >
+    {link.label}
+  </Link>
               ))}
 
               <Link
