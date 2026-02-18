@@ -24,16 +24,14 @@ export const metadata: Metadata = {
   },
 }
 
-import Header from "@/components/Header";
-import "./globals.css";
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
-        <Header />
-        {children}
-      </body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
-  );
+  )
 }
