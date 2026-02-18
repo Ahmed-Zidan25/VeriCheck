@@ -53,7 +53,7 @@ export default function HeroSection() {
   preload="auto" 
 >
   <source 
-    src="https://x2lrseajbmyxpyio.public.blob.vercel-storage.com/0217.mp4" 
+    src="https://vericheck.b-cdn.net/0217.mp4" 
     type="video/mp4" 
   />
   Your browser does not support the video tag.
