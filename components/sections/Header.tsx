@@ -28,32 +28,30 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        isScrolled ? 'bg-vericheck-navy shadow-xl py-2' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 bg-vericheck-navy border-b border-white/10 ${
+        isScrolled ? 'shadow-xl py-2' : 'py-4'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO - White background and shadow completely removed */}
+        {/* LOGO - Now always has the invert filter since bg is always dark */}
         <div className="flex-shrink-0">
           <Link href="/">
             <div className={`relative transition-all duration-300 ${
                 isScrolled ? 'w-32 h-10' : 'w-40 h-14 sm:w-52 sm:h-16'
               }`}>
               <Image 
-                src="/images/Untitled-design.svg" 
+                src="/images/Untitled-design.png" 
                 alt="VeriCheck Logo" 
                 fill 
-                className={`object-contain transition-all duration-300 ${
-                  !isScrolled ? 'brightness-0 invert' : ''
-                }`}
+                className="object-contain brightness-0 invert"
                 priority 
               />
             </div>
           </Link>
         </div>
 
-        {/* NAVIGATION - Aligned to the right using ml-auto */}
+        {/* NAVIGATION - Right aligned */}
         <div className="hidden md:flex items-center ml-auto gap-8 lg:gap-12">
           <div className="flex items-center gap-6 lg:gap-10">
             {navLinks.map((link) => (
