@@ -20,8 +20,9 @@ export default function Header() {
     <>
       {/* Header (always visible, always blue) */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-vericheck-navy border-b border-white/10 shadow-md vc-no-mirror">
+<div className="text-red-400 text-xs">HEADER_INSTANCE</div>
+        <nav className="hidden md:flex items-center gap-8 leading-none">
 
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2 group">
@@ -46,13 +47,14 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
-                key={link.label}
-                href={link.href}
-                className="relative text-white/90 hover:text-white transition-colors text-sm font-medium whitespace-nowrap
-    before:content-none after:content-none before:hidden after:hidden [text-shadow:none] [filter:none]"
-  >
-                {link.label}
-              </Link>
+  key={link.label}
+  href={link.href}
+  className="text-white/90 hover:text-white transition-colors text-sm font-medium"
+>
+  <span className="block leading-none whitespace-nowrap overflow-hidden text-ellipsis">
+    {link.label}
+  </span>
+</Link>
             ))}
 
             <Button className="bg-vericheck-lime hover:bg-vericheck-lime/90 text-vericheck-navy font-semibold">
