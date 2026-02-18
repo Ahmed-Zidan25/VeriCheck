@@ -28,58 +28,51 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        isScrolled ? 'bg-vericheck-navy shadow-xl py-2' : 'bg-transparent py-6'
+      // Set the background to your specific RGB color
+      style={{ backgroundColor: 'rgb(239, 243, 245)' }}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b border-gray-200 ${
+        isScrolled ? 'shadow-md py-2' : 'py-4'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO - White background and shadow completely removed */}
+        {/* LOGO - Original colors visible on light background */}
         <div className="flex-shrink-0">
           <Link href="/">
             <div className={`relative transition-all duration-300 ${
                 isScrolled ? 'w-32 h-10' : 'w-40 h-14 sm:w-52 sm:h-16'
               }`}>
-                {/* <Image 
-  src="/images/image.png" 
-  alt="VeriCheck Logo" 
-  fill 
-  className="object-contain" // Colors will now appear normally
-  priority 
-/> */}
               <Image 
-                src="/images/trans.png" 
+                src="/images/Untitled-design.png" 
                 alt="VeriCheck Logo" 
                 fill 
-                className={`object-contain transition-all duration-300 ${
-                   !isScrolled ? 'brightness-0 invert' : '' 
-                }`}
+                className="object-contain transition-all duration-300" 
                 priority 
-              /> 
+              />
             </div>
           </Link>
         </div>
 
-        {/* NAVIGATION - Aligned to the right using ml-auto */}
+        {/* NAVIGATION - Text changed to Navy for readability on light background */}
         <div className="hidden md:flex items-center ml-auto gap-8 lg:gap-12">
           <div className="flex items-center gap-6 lg:gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-white hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
+                className="text-vericheck-navy hover:text-vericheck-lime transition-colors text-sm font-bold whitespace-nowrap"
               >
                 {link.label}
               </Link>
             ))}
           </div>
-          <Button className="bg-vericheck-lime hover:bg-white text-vericheck-navy font-bold px-6 transition-all">
+          <Button className="bg-vericheck-navy hover:bg-vericheck-lime text-white font-bold px-6 transition-all">
             Get Quote
           </Button>
         </div>
 
-        {/* MOBILE TOGGLE */}
-        <button className="md:hidden text-white ml-4" onClick={() => setIsOpen(!isOpen)}>
+        {/* MOBILE TOGGLE - Changed to Navy */}
+        <button className="md:hidden text-vericheck-navy ml-4" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </nav>
@@ -91,14 +84,15 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-vericheck-navy border-t border-white/10"
+            style={{ backgroundColor: 'rgb(239, 243, 245)' }}
+            className="md:hidden border-t border-gray-200"
           >
             <div className="px-6 py-8 space-y-6">
               {navLinks.map((link) => (
                 <Link 
                   key={link.label} 
                   href={link.href} 
-                  className="block text-xl text-white font-semibold" 
+                  className="block text-xl text-vericheck-navy font-semibold" 
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
