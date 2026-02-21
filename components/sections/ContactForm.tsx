@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronRight, CheckCircle, AlertCircle } from 'lucide-react'
+import { ChevronRight, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -13,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+// Ensure this path matches where you created the server action
+import { sendContactEmail } from '@/app/actions/sendEmail'
 
 const services = [
   'Textiles & Apparel',
@@ -36,6 +38,7 @@ const steps = [
 export default function ContactForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState('')
   const [formData, setFormData] = useState({
     name: '',
@@ -81,24 +84,41 @@ export default function ContactForm() {
     setCurrentStep((prev) => Math.max(prev - 1, 1))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
     if (validateStep(currentStep)) {
-      setIsSubmitted(true)
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-        setCurrentStep(1)
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          service: '',
-          industry: '',
-          details: '',
-          timeline: '',
-        })
-      }, 3000)
+      setIsPending(true)
+      setError('')
+
+      try {
+        const result = await sendContactEmail(formData)
+
+        if (result.success) {
+          setIsSubmitted(true)
+          // Reset form after 3 seconds
+          setTimeout(() => {
+            setIsSubmitted(false)
+            setCurrentStep(1)
+            setFormData({
+              name: '',
+              email: '',
+              company: '',
+              service: '',
+              industry: '',
+              details: '',
+              timeline: '',
+            })
+            setIsPending(false)
+          }, 3000)
+        } else {
+          setError('Failed to send request. Please try again or email us directly.')
+          setIsPending(false)
+        }
+      } catch (err) {
+        setError('An unexpected error occurred.')
+        setIsPending(false)
+      }
     }
   }
 
@@ -168,11 +188,11 @@ export default function ContactForm() {
                 <div className="mb-8">
                   <div className="flex justify-between mb-3">
                     {steps.map((step) => (
-                      <motion.button
+                      <button
                         key={step.id}
                         type="button"
                         onClick={() =>
-                          step.id <= currentStep && setCurrentStep(step.id)
+                          step.id <= currentStep && !isPending && setCurrentStep(step.id)
                         }
                         className={`text-sm font-semibold transition-colors ${
                           step.id <= currentStep
@@ -181,7 +201,7 @@ export default function ContactForm() {
                         }`}
                       >
                         {step.name}
-                      </motion.button>
+                      </button>
                     ))}
                   </div>
                   <div className="h-2 bg-vericheck-navy/10 rounded-full overflow-hidden">
@@ -208,7 +228,7 @@ export default function ContactForm() {
                   </motion.div>
                 )}
 
-                {/* Step 1: Basic Info */}
+                {/* Steps Content */}
                 <AnimatePresence mode="wait">
                   {currentStep === 1 && (
                     <motion.div
@@ -226,6 +246,7 @@ export default function ContactForm() {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
+                          disabled={isPending}
                           placeholder="John Doe"
                           className="border-vericheck-navy/20 focus:border-vericheck-blue"
                         />
@@ -239,6 +260,7 @@ export default function ContactForm() {
                           type="email"
                           value={formData.email}
                           onChange={handleChange}
+                          disabled={isPending}
                           placeholder="john@company.com"
                           className="border-vericheck-navy/20 focus:border-vericheck-blue"
                         />
@@ -251,6 +273,7 @@ export default function ContactForm() {
                           name="company"
                           value={formData.company}
                           onChange={handleChange}
+                          disabled={isPending}
                           placeholder="Your Company"
                           className="border-vericheck-navy/20 focus:border-vericheck-blue"
                         />
@@ -258,7 +281,6 @@ export default function ContactForm() {
                     </motion.div>
                   )}
 
-                  {/* Step 2: Service Type */}
                   {currentStep === 2 && (
                     <motion.div
                       key="step2"
@@ -272,10 +294,9 @@ export default function ContactForm() {
                           Service Type *
                         </label>
                         <Select
+                          disabled={isPending}
                           value={formData.service}
-                          onValueChange={(value) =>
-                            handleSelectChange('service', value)
-                          }
+                          onValueChange={(value) => handleSelectChange('service', value)}
                         >
                           <SelectTrigger className="border-vericheck-navy/20">
                             <SelectValue placeholder="Select a service" />
@@ -294,10 +315,9 @@ export default function ContactForm() {
                           Industry *
                         </label>
                         <Select
+                          disabled={isPending}
                           value={formData.industry}
-                          onValueChange={(value) =>
-                            handleSelectChange('industry', value)
-                          }
+                          onValueChange={(value) => handleSelectChange('industry', value)}
                         >
                           <SelectTrigger className="border-vericheck-navy/20">
                             <SelectValue placeholder="Select an industry" />
@@ -305,15 +325,9 @@ export default function ContactForm() {
                           <SelectContent>
                             <SelectItem value="Textiles">Textiles</SelectItem>
                             <SelectItem value="Food & Beverage Porcelain">Food & Beverage Porcelain</SelectItem>
-                            <SelectItem value="Glassware">
-                              Glassware
-                            </SelectItem>
-                            <SelectItem value="Plastic Product">
-                              Plastic Product
-                            </SelectItem>
-                            <SelectItem value="Plastic Product">
-                              Marble Facade
-                            </SelectItem>
+                            <SelectItem value="Glassware">Glassware</SelectItem>
+                            <SelectItem value="Plastic Product">Plastic Product</SelectItem>
+                            <SelectItem value="Marble Facade">Marble Facade</SelectItem>
                             <SelectItem value="Other">Other</SelectItem>
                           </SelectContent>
                         </Select>
@@ -321,7 +335,6 @@ export default function ContactForm() {
                     </motion.div>
                   )}
 
-                  {/* Step 3: Details */}
                   {currentStep === 3 && (
                     <motion.div
                       key="step3"
@@ -338,6 +351,7 @@ export default function ContactForm() {
                           name="details"
                           value={formData.details}
                           onChange={handleChange}
+                          disabled={isPending}
                           placeholder="Describe what needs to be inspected..."
                           className="border-vericheck-navy/20 focus:border-vericheck-blue min-h-32"
                         />
@@ -347,34 +361,24 @@ export default function ContactForm() {
                           Required Timeline *
                         </label>
                         <Select
+                          disabled={isPending}
                           value={formData.timeline}
-                          onValueChange={(value) =>
-                            handleSelectChange('timeline', value)
-                          }
+                          onValueChange={(value) => handleSelectChange('timeline', value)}
                         >
                           <SelectTrigger className="border-vericheck-navy/20">
                             <SelectValue placeholder="Select timeline" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="Urgent (Within 48 hours)">
-                              Urgent (Within 48 hours)
-                            </SelectItem>
-                            <SelectItem value="ASAP (1-3 days)">
-                              ASAP (1-3 days)
-                            </SelectItem>
-                            <SelectItem value="Flexible (1-2 weeks)">
-                              Flexible (1-2 weeks)
-                            </SelectItem>
-                            <SelectItem value="Planning phase">
-                              Planning phase
-                            </SelectItem>
+                            <SelectItem value="Urgent (Within 48 hours)">Urgent (Within 48 hours)</SelectItem>
+                            <SelectItem value="ASAP (1-3 days)">ASAP (1-3 days)</SelectItem>
+                            <SelectItem value="Flexible (1-2 weeks)">Flexible (1-2 weeks)</SelectItem>
+                            <SelectItem value="Planning phase">Planning phase</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                     </motion.div>
                   )}
 
-                  {/* Step 4: Review */}
                   {currentStep === 4 && (
                     <motion.div
                       key="step4"
@@ -386,39 +390,27 @@ export default function ContactForm() {
                       <div className="bg-vericheck-grey p-6 rounded-lg space-y-3">
                         <div className="flex justify-between">
                           <span className="text-vericheck-navy/70">Name:</span>
-                          <span className="font-semibold text-vericheck-navy">
-                            {formData.name}
-                          </span>
+                          <span className="font-semibold text-vericheck-navy">{formData.name}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-vericheck-navy/70">Email:</span>
-                          <span className="font-semibold text-vericheck-navy">
-                            {formData.email}
-                          </span>
+                          <span className="font-semibold text-vericheck-navy">{formData.email}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-vericheck-navy/70">Company:</span>
-                          <span className="font-semibold text-vericheck-navy">
-                            {formData.company}
-                          </span>
+                          <span className="font-semibold text-vericheck-navy">{formData.company}</span>
                         </div>
                         <div className="border-t border-vericheck-navy/10 pt-3 flex justify-between">
                           <span className="text-vericheck-navy/70">Service:</span>
-                          <span className="font-semibold text-vericheck-navy">
-                            {formData.service}
-                          </span>
+                          <span className="font-semibold text-vericheck-navy">{formData.service}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-vericheck-navy/70">Industry:</span>
-                          <span className="font-semibold text-vericheck-navy">
-                            {formData.industry}
-                          </span>
+                          <span className="font-semibold text-vericheck-navy">{formData.industry}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-vericheck-navy/70">Timeline:</span>
-                          <span className="font-semibold text-vericheck-navy">
-                            {formData.timeline}
-                          </span>
+                          <span className="font-semibold text-vericheck-navy">{formData.timeline}</span>
                         </div>
                       </div>
                     </motion.div>
@@ -432,6 +424,7 @@ export default function ContactForm() {
                       type="button"
                       variant="outline"
                       onClick={handlePrev}
+                      disabled={isPending}
                       className="flex-1 border-vericheck-navy/20"
                     >
                       Back
@@ -449,9 +442,17 @@ export default function ContactForm() {
                   ) : (
                     <Button
                       type="submit"
+                      disabled={isPending}
                       className="flex-1 bg-vericheck-lime hover:bg-vericheck-lime/90 text-vericheck-navy font-bold"
                     >
-                      Submit Request
+                      {isPending ? (
+                        <span className="flex items-center gap-2">
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Sending...
+                        </span>
+                      ) : (
+                        'Submit Request'
+                      )}
                     </Button>
                   )}
                 </div>
