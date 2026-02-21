@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Facebook, Linkedin, MessageCircle, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
+import { Facebook, Linkedin, MessageCircle, Mail, Phone, MapPin } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
