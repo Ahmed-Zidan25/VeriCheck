@@ -31,7 +31,7 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/veri-check/', label: 'Facebook' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/company/veri-check/', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/vericheckqc', label: 'LinkedIn' },
     { icon: MessageCircle, href: 'https://wa.me/201550131151', label: 'WhatsApp' },
   ]
 
