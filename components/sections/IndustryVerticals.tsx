@@ -15,6 +15,19 @@ interface Industry {
 
 const industries: Industry[] = [
   {
+    id: 'quality-training',
+    name: 'Quality Management Training',
+    image: '/images/featured.png',
+    shortDescription: 'Mastering ISO standards and process excellence',
+    description:
+      'Professional certification programs covering Six Sigma, ISO 9001:2015, and Total Quality Management (TQM) to drive operational efficiency and defect reduction.',
+    stats: [
+      { label: 'Certified Professionals', value: '5,000+' },
+      { label: 'Course Modules', value: '24' },
+      { label: 'Success Rate', value: '98.5%' },
+    ],
+},
+  {
     id: 'textiles',
     name: 'Textiles & Apparel',
     image: '/images/textiles.jpg',

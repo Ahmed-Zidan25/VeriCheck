@@ -32,7 +32,7 @@ export default function Footer() {
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/veri-check/', label: 'Facebook' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/veri-check/', label: 'LinkedIn' },
-    { icon: MessageCircle, href: 'https://wa.me/201003539052', label: 'WhatsApp' },
+    { icon: MessageCircle, href: 'https://wa.me/201550131151', label: 'WhatsApp' },
   ]
 
   return (
@@ -118,7 +118,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
                 <Phone size={18} className="flex-shrink-0 mt-0.5" />
-                <span className="text-sm">+201091852883 / +201550131151</span>
+                <span className="text-sm">201550131151</span>
               </div>
               <div className="flex gap-3 text-vericheck-grey hover:text-vericheck-lime transition-colors">
                 <Mail size={18} className="flex-shrink-0 mt-0.5" />
