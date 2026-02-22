@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function sendContactEmail(formData: any) {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'VeriCheck <notifications@veri-check.co>', 
       to: ['contact@veri-check.co'],
       subject: `New Request from ${formData.company || 'New Client'}`,
       replyTo: formData.email,
