@@ -110,7 +110,11 @@ export default function ContactForm() {
                       <SelectTrigger><SelectValue placeholder="Select Service" /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Textiles">Textiles & Apparel</SelectItem>
+                        <SelectItem value="Marble">Quality Management Training</SelectItem>
                         <SelectItem value="Marble">Marble Facade</SelectItem>
+                        <SelectItem value="Marble">Cookware</SelectItem>
+                        <SelectItem value="Marble">Food & Beverage Porcelain</SelectItem>
+                        <SelectItem value="Marble">Stainless Steel Tableware</SelectItem>
                         <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>

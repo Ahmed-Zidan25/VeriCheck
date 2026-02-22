@@ -6,15 +6,26 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function sendContactEmail(formData: any) {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Required for Sandbox
-      to: ['ahmadibrahim.zidan@gmail.com'], // Required for Sandbox
-      subject: `New Request from ${formData.company}`,
-      replyTo: formData.email, // This allows you to reply to the user
+      from: 'onboarding@resend.dev',
+      to: ['contact@veri-check.co'],
+      subject: `New Request from ${formData.company || 'New Client'}`,
+      replyTo: formData.email,
       html: `
-        <h3>New Quote Request</h3>
-        <p><strong>Name:</strong> ${formData.name}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Message:</strong> ${formData.details}</p>
+        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee;">
+          <h2 style="color: #1a2b3c;">New Inspection Quote Request</h2>
+          <hr />
+          <p><strong>Client Name:</strong> ${formData.name}</p>
+          <p><strong>Work Email:</strong> ${formData.email}</p>
+          <p><strong>Company:</strong> ${formData.company}</p>
+          <p><strong>Service:</strong> ${formData.service}</p>
+          <p><strong>Industry:</strong> ${formData.industry}</p>
+          <p><strong>Timeline:</strong> ${formData.timeline}</p>
+          <br />
+          <p><strong>Message / Requirements:</strong></p>
+          <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+            ${formData.details}
+          </div>
+        </div>
       `,
     });
 
