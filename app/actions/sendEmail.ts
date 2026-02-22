@@ -15,7 +15,7 @@ export async function sendContactEmail(formData: any) {
           <h2 style="color: #1a2b3c;">New Inspection Quote Request</h2>
           <hr />
           <p><strong>Client Name:</strong> ${formData.name}</p>
-          <p><strong>Work Email:</strong> ${formData.email}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
           <p><strong>Company:</strong> ${formData.company}</p>
           <p><strong>Service:</strong> ${formData.service}</p>
           <br />
