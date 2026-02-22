@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Facebook, Linkedin, MessageCircle, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Linkedin, MessageCircle, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -31,7 +31,7 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/veri-check/', label: 'Facebook' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/company/vericheckqc', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/vericheckqc/', label: 'LinkedIn' },
     { icon: MessageCircle, href: 'https://wa.me/201550131151', label: 'WhatsApp' },
   ]
 
