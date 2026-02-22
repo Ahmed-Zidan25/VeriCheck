@@ -6,8 +6,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function sendContactEmail(formData: any) {
   try {
     const { data, error } = await resend.emails.send({
+      // 1. CHANGE THIS: Use your verified domain
       from: 'VeriCheck <notifications@veri-check.co>', 
-      to: ['contact@veri-check.co'],
+      // 2. THIS CAN NOW STAY AS YOUR BUSINESS EMAIL
+      to: ['contact@veri-check.co'], 
       subject: `New Request from ${formData.company || 'New Client'}`,
       replyTo: formData.email,
       html: `
@@ -15,9 +17,10 @@ export async function sendContactEmail(formData: any) {
           <h2 style="color: #1a2b3c;">New Inspection Quote Request</h2>
           <hr />
           <p><strong>Client Name:</strong> ${formData.name}</p>
-          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Work Email:</strong> ${formData.email}</p>
           <p><strong>Company:</strong> ${formData.company}</p>
           <p><strong>Service:</strong> ${formData.service}</p>
+          <p><strong>Industry:</strong> ${formData.industry}</p>
           <br />
           <p><strong>Message / Requirements:</strong></p>
           <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
