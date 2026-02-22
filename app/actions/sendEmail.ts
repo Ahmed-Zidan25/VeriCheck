@@ -21,6 +21,7 @@ export async function sendContactEmail(formData: any) {
           <p><strong>Company:</strong> ${formData.company}</p>
           <p><strong>Service:</strong> ${formData.service}</p>
           <p><strong>Industry:</strong> ${formData.industry}</p>
+          <p><strong>Timeline:</strong> ${formData.timeline}</p>
           <br />
           <p><strong>Message / Requirements:</strong></p>
           <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">

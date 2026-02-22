@@ -119,6 +119,26 @@ export default function ContactForm() {
                       </SelectContent>
                     </Select>
                   </div>
+                    <div>
+                    <label className="text-sm font-semibold mb-2 block">Industry</label>
+                    <Select onValueChange={(v) => handleSelectChange('industry', v)}>
+                      <SelectTrigger><SelectValue placeholder="Select Industry" /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Manufacturing">Manufacturing</SelectItem>
+                        <SelectItem value="Retail">Retail</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <label className="text-sm font-semibold mb-2 block">Timeline</label>
+                    <Select onValueChange={(v) => handleSelectChange('timeline', v)}>
+                      <SelectTrigger><SelectValue placeholder="How soon?" /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Urgent">Urgent (48h)</SelectItem>
+                        <SelectItem value="Standard">1-3 Days</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
 
                 <div>
